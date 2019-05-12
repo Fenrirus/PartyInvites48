@@ -8,11 +8,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Przyjęcie urodzinowe</title>
 </head>
 <body>
     <div> 
-        Witaj, świecie (z widoku)
+        @ViewBag.Greeting, świecie (z widoku)
+        <p>
+            Zapraszamy na wspaniałe przyjęcie. <br />
+            (do zrobienia)
+        </p>
+        @Html.ActionLink("Wyślij potwierdzenie", "RsvpForm")
     </div>
 </body>
 </html>
