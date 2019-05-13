@@ -9,19 +9,43 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>Dziękujemy</title>
+    <style>
+        body {
+            background-color: #F1F1F1
+        }
+    </style>
 </head>
 <body>
-    <div> 
+    @{ 
+        try
+        {
+            WebMail.SmtpServer = "smtp.przyklad.pl";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "nazwaUżytownika";
+            WebMail.Password = "password";
+            WebMail.From = "zaproszenie@przyklad.pl";
+            WebMail.Send("gospodarz@przyklad.pl", "Powiadomienie", Model.Name + ((Model.WillAttend ?? false) ? "" : "nie") + "przyjdzie");
+        }
+        catch (Exception)
+        {
+            @:<b>Wiadomość nie może zostać dostarczona</b>
+        }
+    }
+    <div class="text-center"> 
         <h1>Dziękujemy, @Model.Name</h1>
-        @if (Model.WillAttend == true)
+        <div class="lead">
+            @if (Model.WillAttend == true)
         {
-            @:Cieszymy się, że przyjdziesz
-        }
-        else
-        {
-            @:Przykro nam, że nie możesz się pojawić
-        }
+                @:Cieszymy się, że przyjdziesz
+            }
+            else
+            {
+                @:Przykro nam, że nie możesz się pojawić
+            }
+        </div>
     </div>
 </body>
 </html>

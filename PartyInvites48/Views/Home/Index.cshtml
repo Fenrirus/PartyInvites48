@@ -8,16 +8,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>Przyjęcie urodzinowe</title>
+    <style>
+        .btn a {color: white; text-decoration:none}
+        body{background-color: #F1F1F1}
+    </style>
 </head>
 <body>
-    <div> 
-        @ViewBag.Greeting, świecie (z widoku)
-        <p>
-            Zapraszamy na wspaniałe przyjęcie. <br />
-            (do zrobienia)
-        </p>
-        @Html.ActionLink("Wyślij potwierdzenie", "RsvpForm")
+    <div class="text-center"> 
+        <h2>Zapraszamy na wspaniałe przyjęcie! </h2>
+        <h3>Ty też zostałeś zaproszony </h3>
+        <div class="btn btn-success">
+            @Html.ActionLink("Wyślij potwierdzenie", "RsvpForm")
+        </div>
     </div>
 </body>
 </html>
